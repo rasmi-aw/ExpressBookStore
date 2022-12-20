@@ -1,6 +1,12 @@
 let express = require('express')()
 express.set('view engine', 'pug');
 //
-express.get('/', (req, res) => {
-    res.render('index',{test:"It works"})
-}).listen(80)
+module.exports = {
+    start: function (port) {
+        console.log("Server started")
+        express.get('/', (req, res) => {
+            res.render('index', {test: "It works"})
+            res.end()
+        }).listen(port)
+    }
+}
